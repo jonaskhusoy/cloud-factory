@@ -1,12 +1,22 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { Component, signal } from '@angular/core';
+import { CommonModule } from '@angular/common'
+import {Dashboard} from '../dashboard/dashboard/dashboard';
+import {Log} from '../log/log/log';
+import {Statistics} from '../statistics/statistics/statistics';
+import {ManualControls} from '../manual-controls/manual-controls/manual-controls';
 
 @Component({
   selector: 'app-home',
-  imports: [],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  standalone: true,
+  imports: [CommonModule, Dashboard, Log, Statistics, ManualControls],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.css',
+  host: { class: 'flex-1 flex flex-col h-full' }  // adds classes to <app-home> itself
 })
 export class Home {
+  tabs = ['Cell', 'Manual', 'Statistics', 'Log', 'Configuration', 'I/O'];
+  selectedTab = signal('Cell');
 
+  selectTab(tab: string) {
+    this.selectedTab.set(tab);
+  }
 }

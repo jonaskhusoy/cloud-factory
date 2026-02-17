@@ -1,0 +1,8 @@
+.main-content{
+  background-color: yellow !important;
+}
+:host {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
