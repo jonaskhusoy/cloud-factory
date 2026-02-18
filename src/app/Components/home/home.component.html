@@ -1,16 +1,16 @@
-<div class="h-full flex-1 flex flex-col main-content">  <!-- Mobile dropdown -->
+<div class="h-full flex-1 flex flex-col main-content w-full">  <!-- Mobile dropdown -->
   <div class="grid grid-cols-1 sm:hidden">
     <select
       aria-label="Select a tab"
       (change)="selectTab($any($event.target).value)"
-      class="col-start-1 row-start-1 w-full m-10 appearance-none rounded-md bg-white py-2 pr-8 pl-3 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 focus:outline-2 focus:-outline-offset-2 focus:outline-primary-800 dark:bg-white/5 dark:text-gray-100 dark:outline-white/10 dark:*:bg-gray-800 dark:focus:outline-primary-700">
+      class="col-start-1 row-start-1 w-full appearance-none rounded-md bg-white py-2 pr-8 pl-3 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 focus:outline-2 focus:-outline-offset-2 focus:outline-primary-800 dark:bg-white/5 dark:text-gray-100 dark:outline-white/10 dark:*:bg-gray-800 dark:focus:outline-primary-700">
       <option *ngFor="let tab of tabs" [value]="tab" [selected]="selectedTab() === tab">
         {{ tab }}
       </option>
     </select>
-    <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" class="pointer-events-none col-start-1 row-start-1 mr-2 size-5 self-center justify-self-end fill-gray-500 dark:fill-gray-400">
-      <path d="M4.22 6.22a.75.75 0 0 1 1.06 0L8 8.94l2.72-2.72a.75.75 0 1 1 1.06 1.06l-3.25 3.25a.75.75 0 0 1-1.06 0L4.22 7.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" fill-rule="evenodd" />
-    </svg>
+<!--    <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" class="pointer-events-none col-start-1 row-start-1 mr-2 size-5 self-center justify-self-end fill-gray-500 dark:fill-gray-400">-->
+<!--      <path d="M4.22 6.22a.75.75 0 0 1 1.06 0L8 8.94l2.72-2.72a.75.75 0 1 1 1.06 1.06l-3.25 3.25a.75.75 0 0 1-1.06 0L4.22 7.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" fill-rule="evenodd" />-->
+<!--    </svg>-->
   </div>
 
   <!-- Desktop tabs -->
@@ -23,8 +23,8 @@
         (click)="selectTab(tab); $event.preventDefault()"
         [attr.aria-current]="selectedTab() === tab ? 'page' : null"
         [class]="selectedTab() === tab
-        ? 'flex border-b-2 border-primary-800 px-1 py-4 text-sm font-medium whitespace-nowrap text-primary-800 dark:border-primary-800 dark:text-primary-700'
-        : 'flex border-b-2 border-transparent px-1 py-4 text-sm font-medium whitespace-nowrap text-gray-500 hover:border-gray-200 hover:text-gray-700 dark:text-gray-400 dark:hover:border-white/20 dark:hover:text-white'">
+        ? 'flex min-w-20 rounded-md justify-center bg-indigo-100 px-3 py-2 my-1 text-sm font-medium text-primary-700 dark:bg-primary-900/40 dark:text-primary-400'
+        : 'flex min-w-20 justify-center rounded-md px-3 py-2 my-1 text-sm font-medium text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200'">
         {{ tab }}
         </a>
       </nav>
