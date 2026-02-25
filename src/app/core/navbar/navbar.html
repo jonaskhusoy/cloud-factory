@@ -1,16 +1,16 @@
-@if (isSuper$ | async) {
-  <div>
-    <p class="text-primary-700">
-      Only visible to super users
-    </p>
-  </div>
+<!--@if (isSuper$ | async) {-->
+<!--  <div>-->
+<!--    <p class="text-primary-700">-->
+<!--      Only visible to super users-->
+<!--    </p>-->
+<!--  </div>-->
 
-}
-@for (role of roles$ | async; track role) {
-  <p>{{ role }}</p>
-} @empty {
-  <p>No roles assigned</p>
-}
+<!--}-->
+<!--@for (role of roles$ | async; track role) {-->
+<!--  <p>{{ role }}</p>-->
+<!--} @empty {-->
+<!--  <p>No roles assigned</p>-->
+<!--}-->
 <nav class="border-b border-gray-200 bg-white dark:border-white/10 dark:bg-navbar-background w-screen">
   <div class="mx-auto max-w-10xl px-4 sm:px-6 lg:px-8">
     <div class="flex h-16 justify-between">

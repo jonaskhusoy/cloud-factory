@@ -30,10 +30,11 @@
       </nav>
     </div>
   </div>
+
 <!-- Tab content -->
-  <div class="mx-10 mt-4 mb-4 flex-1 h-full rounded-md border border-gray-200 dark:border-white/10 p-6">
+  <div class="mx-10 mt-4 mb-4 flex flex-row flex-1 h-full rounded-md border border-gray-200 dark:border-white/10 p-6">
     @if (selectedTab() === 'Cell') {
-      <app-dashboard />
+      <app-dashboard class="flex flex-1 h-full w-full" />
     } @else if (selectedTab() === 'Manual') {
       <app-manual-controls />
     } @else if (selectedTab() === 'Statistics') {

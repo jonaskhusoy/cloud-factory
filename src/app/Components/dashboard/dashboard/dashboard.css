@@ -1,0 +1,4 @@
+:host {
+  display: block; /* or inline-block, or flex */
+  height: 100%; /* e.g., 100%, 300px, 10vh */
+}
