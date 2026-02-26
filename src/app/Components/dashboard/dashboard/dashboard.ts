@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {CellComponentCard} from '../../../Shared/Components/cell-component-card/cell-component-card';
+import {CellService} from '../../../Services/cell-service';
 
 @Component({
   selector: 'app-dashboard',
@@ -11,5 +12,7 @@ import {CellComponentCard} from '../../../Shared/Components/cell-component-card/
   }
 })
 export class Dashboard {
+  cellService = inject(CellService)
+  cell = this.cellService.cell;
 
 }

@@ -80,6 +80,8 @@
   --color-warning-950: #451a03;
 
 }
+
+
 /* Global base styles */
 body {
   background-color: var(--color-background);

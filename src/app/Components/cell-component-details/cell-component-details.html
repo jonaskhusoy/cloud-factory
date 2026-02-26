@@ -1,0 +1,10 @@
+<!-- cell-component-detail.html -->
+@if (component(); as comp) {
+  <div class="p-6">
+    <h1 class="text-xl font-semibold text-gray-200">{{ comp.name }}</h1>
+    <span>{{ comp.status() }}</span>
+    <!-- add more detail as needed -->
+  </div>
+} @else {
+  <p class="text-gray-400">Component not found.</p>
+}

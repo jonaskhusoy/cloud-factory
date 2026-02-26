@@ -1,4 +1,14 @@
 <div class="flex flex-1 h-full w-full">
-  <app-cell-component-card></app-cell-component-card>
+  @for (component of cell().cellComponents; track component.id) {
+    <app-cell-component-card [cell]="component" />
+  }
 </div>
+
+@if (cell().emergencyStop())
+{
+  <span>hello</span>
+}
+@else {
+  <span>fuck</span>
+}
 
