@@ -1,6 +1,6 @@
 :host {
-  display: flex; /* or inline-block, or flex */
-  height: 100%; /* e.g., 100%, 300px, 10vh */
+  /*display: flex; !* or inline-block, or flex *!*/
+  /*height: 100%; !* e.g., 100%, 300px, 10vh *!*/
 }
 
 @keyframes pulse-outline-blue {

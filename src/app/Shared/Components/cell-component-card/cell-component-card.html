@@ -1,5 +1,5 @@
 <div
-  class=" cursor-pointer hover:scale-105 transition-transform divide-y flex flex-col h-40 max-w-86 flex-1 divide-gray-200 overflow-hidden rounded-lg bg-white shadow-sm dark:divide-white/10 dark:bg-gray-800/50 dark:shadow-none "
+  class="cursor-pointer hover:scale-105 transition-transform divide-y flex flex-col h-40 max-w-86 flex-1 divide-gray-200 overflow-hidden rounded-lg bg-white shadow-sm dark:divide-white/10 dark:bg-gray-800/50 dark:shadow-none "
   [ngClass]="outlineClass()"
   [routerLink]="['/cell-components', cell.id]"
 >
@@ -30,8 +30,8 @@
   </div>
 
   <!-- Content -->
-  <div class="px-4 py-5 sm:p-6 flex flex-1 w-full h-full">
-    <div class="flex justify-between items-end w-full h-full" >
+  <div class="px-4 py-5 sm:p-6 flex flex-1 w-full ">
+    <div class="flex justify-between items-end w-full " >
       <span class="text-sm text-gray-400">Status:</span>
       <span class="text-sm font-medium" [ngClass]="cell.textStatusColor()">{{ cell.status() }}</span>    </div>
   </div>

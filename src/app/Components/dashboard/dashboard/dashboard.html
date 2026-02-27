@@ -1,14 +1,43 @@
-<div class="flex flex-1 h-full w-full">
+<div class="flex flex-col flex-1 h-full w-full "
+[ngClass]="outlineClass()">
+  <div class="flex flex-1 h-full w-full ">
   @for (component of cell().cellComponents; track component.id) {
     <app-cell-component-card [cell]="component" />
   }
+    <app-safety-curtain
+      orientation="vertical"
+      [breached]="cell().rightSafetyCurtainBreached()"
+      startDirection="down"
+      endDirection="up"
+    />
 </div>
 
-@if (cell().emergencyStop())
-{
-  <span>hello</span>
-}
-@else {
-  <span>fuck</span>
-}
+  <app-safety-curtain
+    orientation="horizontal"
+    [breached]="cell().leftSafetyCurtainBreached()"
+    startDirection="left"
+    endDirection="right"
+  />
+<div class="h-16 flex space-x-2">
+  @if (!cell().emergencyStop())
+  {
+    <button type="button" class="inline-flex h-16 items-center gap-x-2 rounded-md bg-error-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-xs hover:bg-error-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-error-600 dark:bg-error-600 dark:shadow-none dark:hover:bg-error-800 dark:focus-visible:outline-error-500">
+      <svg viewBox="0 0 20 20" fill="currentColor" data-slot="icon" aria-hidden="true" class="-ml-0.5 size-5">
+        <path d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16Zm3.857-9.809a.75.75 0 0 0-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 1 0-1.06 1.061l2.5 2.5a.75.75 0 0 0 1.137-.089l4-5.5Z" clip-rule="evenodd" fill-rule="evenodd" />
+      </svg>
+      Reset emergency stop
+    </button>
+  }
+  @if (!cell().operatorSafety())
+  {
+    <button type="button" class="inline-flex h-16 items-center gap-x-2 rounded-md bg-error-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-xs hover:bg-error-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-error-600 dark:bg-error-600 dark:shadow-none dark:hover:bg-error-800 dark:focus-visible:outline-error-500">
+      <svg viewBox="0 0 20 20" fill="currentColor" data-slot="icon" aria-hidden="true" class="-ml-0.5 size-5">
+        <path d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16Zm3.857-9.809a.75.75 0 0 0-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 1 0-1.06 1.061l2.5 2.5a.75.75 0 0 0 1.137-.089l4-5.5Z" clip-rule="evenodd" fill-rule="evenodd" />
+      </svg>
+      Reset operator safety
+    </button>
+  }
+</div>
+</div>
+
 

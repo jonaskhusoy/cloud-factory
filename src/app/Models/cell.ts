@@ -19,8 +19,10 @@ export class Cell {
 
   // Safety statuses as signals
   emergencyStop = signal<boolean>(true);
-  operatorSafety = signal<boolean>(false);
-  lightCurtainStatus =  signal<boolean>(false);
+  operatorSafety = signal<boolean>(true);
+  leftSafetyCurtainBreached =  signal<boolean>(false);
+  rightSafetyCurtainBreached =  signal<boolean>(false);
+
   doorInterlockStatus =  signal<boolean>(false);
 
   status = signal<CellState>(CellState.Idle);

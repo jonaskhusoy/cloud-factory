@@ -2,3 +2,21 @@
   display: block; /* or inline-block, or flex */
   height: 100%; /* e.g., 100%, 300px, 10vh */
 }
+
+@keyframes pulse-outline-blue {
+  0%, 100% { outline-color: var(--color-success-500); }
+  50%       { outline-color: transparent; }
+}
+
+@keyframes pulse-outline-red {
+  0%, 100% { outline-color: var(--color-error-600); }
+  50%       { outline-color: transparent; }
+}
+
+.outline-pulse-active {
+  animation: pulse-outline-blue 1.5s ease-in-out infinite;
+}
+
+.outline-pulse-error {
+  animation: pulse-outline-red 0.8s ease-in-out infinite;
+}

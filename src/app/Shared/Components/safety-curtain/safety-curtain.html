@@ -1,0 +1,69 @@
+<div
+  class="safety-curtain flex flex-1 "
+  [class.breached]="breached()"
+  [class.vertical]="orientation() === 'vertical'"
+>
+  <!-- Start icon -->
+  <div class="curtain-end" [attr.aria-label]="'Start facing ' + startDirection()">
+    <ng-container *ngTemplateOutlet="arrowIcon; context: { dir: startDirection(), b: breached() }" />
+  </div>
+
+  <!-- Line: start to center -->
+  <div class="curtain-line">
+    <div class="line-track">
+      <div class="line-fill" [class.breached]="breached()"></div>
+      <div class="beam-dots" [class.breached]="breached()">
+        <span *ngFor="let d of dots" class="dot"></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Center status -->
+  <div class="curtain-status" [attr.aria-label]="breached() ? 'Breached' : 'Clear'">
+    <div class="status-icon-wrapper" [class.breached]="breached()">
+      <svg *ngIf="!breached()" class="status-icon ok" viewBox="0 0 24 24" fill="none">
+        <path d="M12 2L4 6v6c0 5.25 3.5 10.15 8 11.35C16.5 22.15 20 17.25 20 12V6L12 2z"
+              fill="currentColor" fill-opacity="0.15" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+        <path d="M8.5 12l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <svg *ngIf="breached()" class="status-icon breached" viewBox="0 0 24 24" fill="none">
+        <path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"
+              fill="currentColor" fill-opacity="0.15" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+        <line x1="12" y1="9" x2="12" y2="13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        <circle cx="12" cy="17" r="1" fill="currentColor"/>
+      </svg>
+    </div>
+    <span class="status-label" [class.breached]="breached()">
+      {{ breached() ? 'BREACHED' : 'CLEAR' }}
+    </span>
+  </div>
+
+  <!-- Line: center to end -->
+  <div class="curtain-line">
+    <div class="line-track">
+      <div class="line-fill" [class.breached]="breached()"></div>
+      <div class="beam-dots" [class.breached]="breached()">
+        <span *ngFor="let d of dots" class="dot"></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- End icon -->
+  <div class="curtain-end" [attr.aria-label]="'End facing ' + endDirection()">
+    <ng-container *ngTemplateOutlet="arrowIcon; context: { dir: endDirection(), b: breached() }" />
+  </div>
+</div>
+
+<!-- Shared arrow icon template -->
+<ng-template #arrowIcon let-dir="dir" let-b="b">
+  <svg
+    class="arrow-icon"
+    [class.breached]="b"
+    viewBox="0 0 24 24"
+    fill="none"
+    [style.transform]="'rotate(' + rotationDeg(dir) + 'deg)'"
+  >
+    <circle cx="12" cy="12" r="11" stroke="currentColor" stroke-width="1.5" fill="none" class="icon-ring"/>
+    <path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+</ng-template>
