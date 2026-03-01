@@ -10,7 +10,7 @@ import { RouterLink } from '@angular/router';
   templateUrl: './cell-component-card.html',
   styleUrl: './cell-component-card.css',
   host: {
-    class: 'flex flex-1 h-full w-full justify-center'
+    class: ''
   }
 })
 export class CellComponentCard {

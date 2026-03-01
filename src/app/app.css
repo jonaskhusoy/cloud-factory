@@ -74,6 +74,8 @@ html, body {
   --color-error-900: #881337;
   --color-error-950: #4c0519;
 
+  --color-start-600: #059669;
+
   /* Warning - Amber */
   --color-warning-50:  #fffbeb;
   --color-warning-100: #fef3c7;

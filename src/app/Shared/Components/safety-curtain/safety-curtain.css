@@ -7,7 +7,7 @@
   display: flex;
   align-items: center;
   gap: 0;
-  padding: 16px 12px;
+  /*padding: 16px 12px;*/
   background: transparent;
   position: relative;
   transition: border-color 0.3s ease;
