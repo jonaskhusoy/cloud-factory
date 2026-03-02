@@ -1,4 +1,4 @@
-import {Robot} from '../Models/robot';
+import {Robot} from '../Models/cell-components/robot';
 import {Conveyor} from '../Models/cell-components/conveyor';
 import {Cell} from '../Models/cell';
 

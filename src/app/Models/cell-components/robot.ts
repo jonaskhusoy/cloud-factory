@@ -1,4 +1,4 @@
-import {CellComponent, OperationalStatus} from './cell-components/cell-component-model';
+import {CellComponent, OperationalStatus} from './cell-component-model';
 import {signal} from '@angular/core';
 
 export class Robot extends CellComponent{
@@ -7,7 +7,7 @@ export class Robot extends CellComponent{
 
   constructor(id: string, name: string) {
     super(id, name);
-    this.status = signal<OperationalStatus>(OperationalStatus.Running);
+    this.status = signal<OperationalStatus>(OperationalStatus.Idle);
   }
 }
 

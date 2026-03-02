@@ -1,7 +1,7 @@
 import {Component, computed, Input} from '@angular/core';
 import {CellComponent, OperationalStatus} from '../../../Models/cell-components/cell-component-model';
 import {NgClass} from '@angular/common';
-import {DUMMY_CELL} from '../../../Models/robot';
+import {DUMMY_CELL} from '../../../Models/cell-components/robot';
 import { RouterLink } from '@angular/router';
 
 @Component({

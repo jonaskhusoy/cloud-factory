@@ -1,5 +1,5 @@
 import {computed, signal} from '@angular/core';
-import {Robot} from './robot';
+import {Robot} from './cell-components/robot';
 import {Conveyor} from './cell-components/conveyor';
 export enum CellState {
   Idle,
