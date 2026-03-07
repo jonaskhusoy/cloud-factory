@@ -7,7 +7,7 @@ export class Robot extends CellComponent{
 
   constructor(id: string, name: string) {
     super(id, name);
-    this.status = signal<OperationalStatus>(OperationalStatus.Idle);
+    this.status = signal<OperationalStatus>(OperationalStatus.Running);
   }
 }
 

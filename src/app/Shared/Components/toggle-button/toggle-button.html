@@ -1,11 +1,16 @@
-<div class="inline-flex rounded-md overflow-hidden border border-white/10">
+<div class="flex w-full justify-around items-center ">
+  <div class="flex w-[40%] border-b border-b-gray-400/50 border-dotted pb-2">
+    <span class="text-gray-400">Toggle</span>
+  </div>
 
+<div class="flex flex-row border rounded-md border-gray-400/50">
   <!-- YES -->
+
   <button
     type="button"
     (click)="changed.emit(true)"
     [class]="value()
-      ? 'flex items-center gap-2 px-5 py-2.5 text-sm font-semibold text-white bg-primary-500 transition-colors duration-150'
+      ? 'flex items-center gap-2 px-5 py-2.5 text-sm font-semibold text-white bg-primary-800 transition-colors duration-150 border-primary-400'
       : 'flex items-center gap-2 px-5 py-2.5 text-sm font-semibold text-gray-400 bg-transparent hover:text-gray-200 transition-colors duration-150'">
     <svg *ngIf="value()" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/>
@@ -20,12 +25,12 @@
     type="button"
     (click)="changed.emit(false)"
     [class]="!value()
-      ? 'flex items-center gap-2 px-5 py-2.5 text-sm font-semibold text-white bg-primary-500 transition-colors duration-150'
+      ? 'flex items-center gap-2 px-5 py-2.5 text-sm font-semibold text-white bg-primary-800 transition-colors duration-150'
       : 'flex items-center gap-2 px-5 py-2.5 text-sm font-semibold text-gray-400 bg-transparent hover:text-gray-200 transition-colors duration-150'">
     <svg *ngIf="!value()" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/>
     </svg>
     Disable
   </button>
-
+</div>
 </div>

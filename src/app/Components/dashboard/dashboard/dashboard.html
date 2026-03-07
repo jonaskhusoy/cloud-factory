@@ -11,7 +11,7 @@
 
     <app-safety-curtain
       orientation="vertical"
-      [breached]="cell().rightSafetyCurtainBreached()"
+      [breached]="cell().rightSafetyCurtain()"
       startDirection="down"
       endDirection="up"
     />
@@ -19,7 +19,7 @@
 
   <app-safety-curtain
     orientation="horizontal"
-    [breached]="cell().leftSafetyCurtainBreached()"
+    [breached]="cell().leftSafetyCurtain()"
     startDirection="right"
     endDirection="left"
   /><div class="flex w-full space-x-2">

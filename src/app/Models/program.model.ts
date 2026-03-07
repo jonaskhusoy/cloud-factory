@@ -1,2 +1,4 @@
-export class Program {
+export class CellProgram {
+  name: string | undefined;
+
 }
