@@ -49,8 +49,10 @@ export class CellService {
   }
 
   private startHub() {
-    this.hubConnection = new signalR.HubConnectionBuilder()
-      .withUrl(this.hubUrl)
+    this.hubConnection = new HubConnectionBuilder()
+      .withUrl(this.hubUrl, {
+        withCredentials: true
+      })
       .withAutomaticReconnect()
       .build();
 
