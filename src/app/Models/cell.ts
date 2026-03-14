@@ -17,6 +17,8 @@ export class Cell {
   id: string;
   name: string;
 
+  plcConnected = signal<boolean>(false);
+
   // Safety statuses as signals
   emergencyStop = signal<boolean>(false);
   operatorSafety = signal<boolean>(false);
