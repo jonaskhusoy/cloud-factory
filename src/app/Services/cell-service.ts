@@ -8,9 +8,12 @@ import { CellDto } from '../Models/dtos/cell-dto'
 import {StateUpdate} from '../Models/dtos/state-update';
 import {Observable} from 'rxjs';
 import * as signalR from '@microsoft/signalr'
+import {DialogService} from './dialog-service';
 
 @Injectable({ providedIn: 'root' })
 export class CellService {
+  // private dialogService = inject(DialogService);
+
   private readonly apiUrl = 'http://localhost:5175/api/cell';
   private readonly hubUrl = 'http://localhost:5175/hubs/cell';
 
@@ -95,13 +98,25 @@ export class CellService {
   }
 
   // generic read by variable name on the ads
-  read<T>(variableName: string): Observable<T> {
-    return this.http.get<T>(`${this.apiUrl}/read/${variableName}`);
+  readVariable<T>(variableName: string): Observable<{ property: string, value: T }> {
+    return this.http.get<{ property: string, value: T }>(
+      this.apiUrl+`/read/${variableName}`
+    );
   }
 
   // generic write a variable by var name to the ads
-  write(variableName: string, value: any): Observable<void> {
-    return this.http.post<void>(`${this.apiUrl}/write`, { variableName, value });
+  writeVariable<T>(variableName: string, value: T): Observable<void> {
+    return this.http.post<void>(
+      this.apiUrl+`/write/${variableName}`,
+      value  // send raw value, not { value }
+    );
   }
 
+// cell.service.ts
+  startProgram() {
+    this.writeVariable('ProgramStart', true).subscribe({
+      next: () => console.log('Program started'),
+      // error: (err) => this.dialogService.showError(err.message ?? 'Failed to start program.')
+    });
+  }
 }

@@ -51,6 +51,7 @@
          bg-success-600 hover:bg-success-800
          disabled:bg-gray-400 disabled:cursor-not-allowed disabled:hover:bg-gray-400"
       [disabled]="!cell().emergencyStop() || !cell().operatorSafety()"
+      (click)="cellService.startProgram()"
     >
       Start
     </button>
