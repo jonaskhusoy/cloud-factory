@@ -7,10 +7,11 @@ import {Footer} from './core/footer/footer';
 import {LoginButtonComponent} from './Components/auth/login-button.component';
 import {LogoutButtonComponent} from './Components/auth/logout-button.component';
 import {ProfileComponent} from './Components/auth/profile.component';
+import {ErrorDialog} from './Components/modals/error-dialog/error-dialog';
 
 @Component({
   selector: 'app-root',
-  imports: [CommonModule, RouterOutlet, Navbar, Footer, LoginButtonComponent, LogoutButtonComponent, ProfileComponent],
+  imports: [CommonModule, RouterOutlet, Navbar, Footer, LoginButtonComponent, LogoutButtonComponent, ProfileComponent, ErrorDialog],
   templateUrl: `./app.html`,
   styleUrl: './app.css'
 })

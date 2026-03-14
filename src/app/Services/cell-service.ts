@@ -12,7 +12,7 @@ import {DialogService} from './dialog-service';
 
 @Injectable({ providedIn: 'root' })
 export class CellService {
-  // private dialogService = inject(DialogService);
+  private dialogService = inject(DialogService);
 
   private readonly apiUrl = 'http://localhost:5175/api/cell';
   private readonly hubUrl = 'http://localhost:5175/hubs/cell';
@@ -116,7 +116,7 @@ export class CellService {
   startProgram() {
     this.writeVariable('ProgramStart', true).subscribe({
       next: () => console.log('Program started'),
-      // error: (err) => this.dialogService.showError(err.message ?? 'Failed to start program.')
+      error: (err) => this.dialogService.showError(err.error?.error ?? err.message ?? 'Failed to start program.')
     });
   }
 }
