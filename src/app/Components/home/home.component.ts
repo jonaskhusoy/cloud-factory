@@ -1,9 +1,10 @@
-import { Component, signal } from '@angular/core';
+import {Component, inject, signal} from '@angular/core';
 import { CommonModule } from '@angular/common'
 import {Dashboard} from '../dashboard/dashboard/dashboard';
 import {Log} from '../log/log/log';
 import {Statistics} from '../statistics/statistics/statistics';
 import {ManualControlsComponent} from '../manual-controls/manual-controls';
+import {CellService} from '../../Services/cell-service';
 
 @Component({
   selector: 'app-home',
@@ -15,6 +16,7 @@ import {ManualControlsComponent} from '../manual-controls/manual-controls';
 export class Home {
   tabs = ['Cell', 'Manual', 'Statistics', 'Log', 'Configuration', 'I/O'];
   selectedTab = signal('Cell');
+  cellService = inject(CellService)
 
   selectTab(tab: string) {
     this.selectedTab.set(tab);

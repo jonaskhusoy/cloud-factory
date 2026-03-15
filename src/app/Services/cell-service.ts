@@ -17,6 +17,8 @@ export class CellService {
   private readonly apiUrl = 'http://localhost:5175/api/cell';
   private readonly hubUrl = 'http://localhost:5175/hubs/cell';
 
+  private retryTimer: ReturnType<typeof setTimeout> | null = null;
+
   private hubConnection?: signalR.HubConnection;
 
   // The cell state — initialized with dummy data for now
@@ -24,8 +26,6 @@ export class CellService {
   private http = inject(HttpClient);
   // Connection state so components can show connected/disconnected UI
   isConnected = signal<boolean>(false);
-
-
 
   // private hubConnection: HubConnection;
 
@@ -43,12 +43,42 @@ export class CellService {
       next: (dto) => {
         this.applyDto(dto);
         this.isConnected.set(true);
-        this.startHub(); // start SignalR after initial state is loaded
+        this.startHub();
       },
       error: () => {
         this.isConnected.set(false);
+        this.retryConnection(); // kick off retry loop
       }
     });
+  }
+
+  private retryConnection() {
+    const retryInterval = 5000; // ms
+    const maxRetries = 20;
+    let attempts = 0;
+
+    const attempt = () => {
+      if (attempts >= maxRetries) {
+        console.error('Max reconnection attempts reached.');
+        return;
+      }
+
+      attempts++;
+      console.log(`Reconnection attempt ${attempts}/${maxRetries}...`);
+
+      this.http.get<CellDto>(this.apiUrl).subscribe({
+        next: (dto) => {
+          this.applyDto(dto);
+          this.isConnected.set(true);
+          this.startHub();
+        },
+        error: () => {
+          this.retryTimer = setTimeout(attempt, retryInterval);
+        }
+      });
+    };
+
+    attempt();
   }
 
   private startHub() {
