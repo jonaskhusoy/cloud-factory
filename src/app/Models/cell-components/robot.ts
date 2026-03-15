@@ -1,4 +1,4 @@
-import {CellComponent, OperationalStatus} from './cell-components/cell-component-model';
+import {CellComponent, OperationalStatus} from './cell-component-model';
 import {signal} from '@angular/core';
 
 export class Robot extends CellComponent{

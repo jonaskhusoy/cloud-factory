@@ -1,0 +1,26 @@
+<div class="flex flex-1 h-full">
+
+  <!-- Vertical tab sidebar -->
+  <nav class="flex flex-col border-r border-primary-800 min-w-46 gap-1 pt-1 px-2">
+    <a
+    *ngFor="let tab of tabs"
+    href="#"
+    (click)="selectTab(tab); $event.preventDefault()"
+    [attr.aria-current]="selectedTab() === tab ? 'page' : null"
+    [class]="selectedTab() === tab
+    ? 'flex  px-3 py-2 text-sm font-medium text-primary-800  border-b border-primary-800'
+    : 'flex px-3 py-2 text-sm font-medium text-gray-400 hover:text-gray-200 hover:bg-white/5'">
+    {{ tab }}
+    </a>
+  </nav>
+
+  <!-- Tab content -->
+  <div class="flex flex-1 px-6">
+    @if (selectedTab() === 'Robot') {
+      <app-robot-manual-control-tab class="flex flex-1" />
+    } @else if (selectedTab() === 'Conveyor 1') {
+      <app-conveyor-manual-control-tab class="flex flex-1" />
+    }
+  </div>
+
+</div>

@@ -1,5 +1,5 @@
 import {computed, signal} from '@angular/core';
-import {Robot} from './robot';
+import {Robot} from './cell-components/robot';
 import {Conveyor} from './cell-components/conveyor';
 export enum CellState {
   Idle,
@@ -17,18 +17,18 @@ export class Cell {
   id: string;
   name: string;
 
+  plcConnected = signal<boolean>(false);
+
   // Safety statuses as signals
-  emergencyStop = signal<boolean>(true);
-  operatorSafety = signal<boolean>(true);
-  leftSafetyCurtainBreached =  signal<boolean>(false);
-  rightSafetyCurtainBreached =  signal<boolean>(false);
+  emergencyStop = signal<boolean>(false);
+  operatorSafety = signal<boolean>(false);
+  leftSafetyCurtain =  signal<boolean>(true);
+  rightSafetyCurtain =  signal<boolean>(true);
+  doorSafety =  signal<boolean>(false);
 
-  doorInterlockStatus =  signal<boolean>(false);
-
-  status = signal<CellState>(CellState.Idle);
+  state = signal<CellState>(CellState.Idle);
   activeProgramName = signal<string | undefined>(undefined);
   cycleTime = signal<number | undefined>(undefined);
-  faultMessage = signal<string | undefined>(undefined);
   lastUpdated = signal<Date | undefined>(undefined);
 
   // Components don't need to be signals themselves since the

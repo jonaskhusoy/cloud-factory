@@ -6,6 +6,6 @@ export class Conveyor extends CellComponent {
 
   constructor(id: string, name: string) {
     super(id, name);
-    this.status = signal<OperationalStatus>(OperationalStatus.Idle);
+    this.status = signal<OperationalStatus>(OperationalStatus.Faulted);
   }
 }

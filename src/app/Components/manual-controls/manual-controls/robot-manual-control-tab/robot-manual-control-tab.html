@@ -1,0 +1,55 @@
+<div class="flex flex-1 h-full gap-4  overflow-hidden">
+
+  <!-- LEFT: sections column -->
+  <div class="flex flex-col gap-4 min-w-[50%] h-full overflow-y-auto">
+
+    <div class="flex flex-row gap-4 w-full h-[70%]">
+
+    <!--    First section-->
+    <div class="flex flex-col gap-3 rounded-md border w-full h-full border-white/10 p-4">
+      <h3 class="text-xl text-gray-400 tracking-wider">Belt</h3>
+      <!-- buttons/toggles here -->
+
+      <div class="flex w-full justify-around items-center">
+        <div class="flex w-[40%] border-b border-b-gray-400/50 border-dotted pb-2">
+          <span class="text-gray-400">Toggle</span>
+        </div>
+        <button
+          type="button"
+          (click)="onButtonClick()"
+          class="rounded-md bg-success-400 px-3.5 py-2.5 text-sm font-semibold text-white shadow-xs
+           transition-all duration-150 hover:scale-105 hover:bg-success-600
+           focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-success-600
+           dark:bg-success-400 dark:shadow-none dark:hover:bg-success-400 dark:focus-visible:outline-success-600">
+          Toggle manual control
+        </button>
+      </div>
+      <!--    Second section-->
+
+    </div>
+      <div class="flex flex-col gap-3 w-full h-full rounded-md border border-white/10 p-4">
+        <h3 class="text-xl  text-gray-400 tracking-wider">Gripper</h3>
+        <!-- buttons/toggles here -->
+        <app-toggle-button
+          [value]="cell().operatorSafety()"
+          label="Belt"
+          (changed)="cell().operatorSafety.set($event)" />
+      </div>
+      </div>
+
+
+
+<!--    Third section-->
+    <div class="flex flex-col gap-3 rounded-md border h-full border-white/10 p-4">
+      <h3 class="text-xl text-gray-400 tracking-wider">Arm</h3>
+      <!-- buttons/toggles here -->
+    </div>
+
+  </div>
+
+  <!-- RIGHT: image panel -->
+  <div class="flex flex-1 rounded-md border border-white/10 p-4 min-w-0">
+    <img src="..." alt="Component diagram" class="object-contain w-full h-full" />
+  </div>
+
+</div>
